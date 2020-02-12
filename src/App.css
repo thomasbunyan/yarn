@@ -1,0 +1,18 @@
+@font-face {
+	font-family: ProductSansRegular;
+	src: url(./assets/fonts/ProductSansRegular.ttf);
+}
+
+.app {
+	min-height: 100vh;
+	background-color: #f3f5f9;
+	display: flex;
+	flex-direction: row;
+	font-family: ProductSansRegular;
+}
+
+.SideBar {
+}
+
+.Switch {
+}
