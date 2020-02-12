@@ -98,8 +98,13 @@ class Convert extends Component {
 	};
 
 	applySaved = (e) => {
-		let key = e.target.getAttribute("data-key");
-		console.log("Apply", key);
+		let target = this.state.history[e.target.getAttribute("data-key")];
+		this.setState({
+			leftVal: target.leftVal,
+			rightVal: target.rightVal,
+			leftUnit: target.leftUnit,
+			rightUnit: target.rightUnit
+		});
 	};
 
 	getHistory = () => {
@@ -129,14 +134,14 @@ class Convert extends Component {
 				<div className="conversion">
 					<div className="con-value">
 						<input type="text" name="leftVal" onChange={this.handleInput} value={this.state.leftVal} />
-						<select name="leftUnit" onChange={this.handleUpdate}>
+						<select name="leftUnit" onChange={this.handleUpdate} value={this.state.leftUnit}>
 							{this.getUnitOptions()}
 						</select>
 					</div>
 					<i className="fas fa-equals" onClick={this.saveResult}></i>
 					<div className="con-value">
 						<input type="text" name="rightVal" onChange={this.handleInput} value={this.state.rightVal} />
-						<select name="rightUnit" onChange={this.handleUpdate}>
+						<select name="rightUnit" onChange={this.handleUpdate} value={this.state.rightUnit}>
 							{this.getUnitOptions()}
 						</select>
 					</div>
