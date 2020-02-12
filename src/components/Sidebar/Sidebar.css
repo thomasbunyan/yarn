@@ -2,13 +2,13 @@
 	width: 70px;
 	background-color: #fff;
 	border-right: solid #d0d3db 1px;
-	transition: all 0.5s ease-in-out;
+	transition: all 0.3s ease-in-out;
 	overflow: hidden;
 }
 
 .expanded {
 	width: 250px;
-	transition: all 0.5s ease-in-out;
+	transition: all 0.3s ease-in-out;
 }
 
 .sidebar ul {
