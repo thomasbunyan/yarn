@@ -7,6 +7,7 @@ function createWindow() {
 	let win = new BrowserWindow({
 		width: 1080,
 		height: 720,
+		frame: false,
 		webPreferences: {
 			nodeIntegration: true
 		}
@@ -16,17 +17,6 @@ function createWindow() {
 	win.webContents.openDevTools();
 	win.loadURL(isDev ? "http://localhost:3000" : `file://${path.join(__dirname, "../build/index.html")}`);
 }
-
-// ipcMain.on("convert-unit", (event, arg) => {
-// 	// console.log("here 001", arg);
-// 	console.log("hit");
-// 	try {
-// 		convert(arg.val)
-// 			.from(arg.from)
-// 			.to(arg.to);
-// 		event.returnValue = "nice";
-// 	} catch (e) {}
-// });
 
 ipcMain.on("convert-unit-req", (event, arg) => {
 	let { from, to, val } = arg;
