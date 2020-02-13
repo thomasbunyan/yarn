@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./Convert.css";
 import "../route.css";
+
+import InfoBubble from "../../components/InfoBubble/InfoBubble";
+
 const electron = window.require("electron");
 const ipcRenderer = electron.ipcRenderer;
 
@@ -132,19 +135,21 @@ class Convert extends Component {
 			<div className="Convert route">
 				<h1>Convert</h1>
 				<div className="conversion">
-					<div className="con-value">
+					<InfoBubble show={true} width="40" height="200" color="#C7CEEA"></InfoBubble>
+					<i className="fas fa-equals" onClick={this.saveResult}></i>
+					<InfoBubble show={true} width="40" height="200" color="#C7CEEA"></InfoBubble>
+					{/* <div className="con-value">
 						<input type="text" name="leftVal" onChange={this.handleInput} value={this.state.leftVal} />
 						<select name="leftUnit" onChange={this.handleUpdate} value={this.state.leftUnit}>
 							{this.getUnitOptions()}
 						</select>
 					</div>
-					<i className="fas fa-equals" onClick={this.saveResult}></i>
 					<div className="con-value">
 						<input type="text" name="rightVal" onChange={this.handleInput} value={this.state.rightVal} />
 						<select name="rightUnit" onChange={this.handleUpdate} value={this.state.rightUnit}>
 							{this.getUnitOptions()}
 						</select>
-					</div>
+					</div> */}
 				</div>
 				{this.state.history.length > 0 ? (
 					<div className="history">

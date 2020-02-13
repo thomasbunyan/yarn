@@ -19,19 +19,25 @@ class Sidebar extends Component {
 	render() {
 		return (
 			<div className={"sidebar" + (this.state.expandSideBar ? " expanded" : "")}>
-				<div className="rightBar"></div>
-				<ul className="noselect">
+				<div className="right-bar"></div>
+				<ul className={this.state.expandSideBar ? "buttons-expanded" : ""}>
 					<li className="toggle-sidebar" onClick={this.toggleSideBar}>
 						<i className="fas fa-bars"></i>
 					</li>
 					<Link to="/" onClick={() => this.handlePageNav("/")} className={this.state.currentPage === "/" ? "page-selected" : ""}>
 						<li>
-							<i className="fas fa-home"></i>
+							<div>
+								<p className={"icon-label" + (this.state.expandSideBar ? " icon-label-expand" : "")}>Home</p>
+								<i className="fas fa-home"></i>
+							</div>
 						</li>
 					</Link>
 					<Link to="/convert" onClick={() => this.handlePageNav("/convert")} className={this.state.currentPage === "/convert" ? "page-selected" : ""}>
 						<li>
-							<i className="fas fa-balance-scale"></i>
+							<div>
+								<p className={"icon-label" + (this.state.expandSideBar ? " icon-label-expand" : "")}>Convert</p>
+								<i className="fas fa-balance-scale"></i>
+							</div>
 						</li>
 					</Link>
 				</ul>

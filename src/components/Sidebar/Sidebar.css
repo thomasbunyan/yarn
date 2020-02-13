@@ -8,11 +8,11 @@
 }
 
 .expanded {
-	width: 300px;
+	min-width: 300px;
 	transition: all 0.4s ease-in-out;
 }
 
-.rightBar {
+.right-bar {
 	background-color: #fbfbfb;
 	height: calc(100% - 40px);
 	width: 3px;
@@ -32,6 +32,12 @@
 	align-items: center;
 	font-size: 26px;
 	margin-top: 20px;
+	transition: all 0.4s ease-in-out;
+}
+
+.buttons-expanded {
+	width: 300px !important;
+	transition: all 0.4s ease-in-out;
 }
 
 .sidebar ul li {
@@ -44,10 +50,29 @@
 	border-right: 3px solid transparent;
 }
 
+.sidebar ul li div {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.icon-label {
+	overflow: hidden;
+	max-width: 0px;
+	transition: all 0.4s ease-in-out, color 0s;
+}
+.icon-label-expand {
+	max-width: 100px !important;
+	margin-right: 15px;
+	transition: all 0.4s ease-in-out, color 0s;
+}
+
 a {
 	cursor: auto;
 	width: 100%;
 	height: 100%;
+	text-decoration: none;
 }
 
 .sidebar li.toggle-sidebar {
@@ -59,11 +84,13 @@ a {
 	background-color: transparent;
 }
 
-.sidebar ul li:hover i {
+.sidebar ul li:hover i,
+.sidebar ul li:hover p {
 	color: #513bce;
 }
 
-.page-selected i {
+.page-selected i,
+.page-selected p {
 	color: #513bce;
 }
 .page-selected li {
