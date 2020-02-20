@@ -16,6 +16,7 @@
 	height: 100%;
 	width: 100%;
 	display: flex;
+	align-items: center;
 	flex-direction: row;
 	/* justify-content: space-evenly; */
 }
@@ -49,6 +50,64 @@
 	font-size: 24px;
 	color: #fff;
 	max-width: 30vw;
+}
+
+.location-bar {
+	margin-top: 40px;
+	/* border: 1px solid rgb(75, 75, 75); */
+}
+
+.bar-icons {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 20px;
+	margin-bottom: 5px;
+	font-size: 30px;
+	color: rgb(77, 77, 77);
+}
+
+.distance-bar {
+	height: 20px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	/* background-color: red; */
+	box-sizing: border-box;
+	margin: 0 5px 0 10px;
+}
+
+.progress-dot {
+	height: 7px;
+	padding: 7px;
+	background-color: #9c27b0;
+	border-radius: 50%;
+	position: absolute;
+	transform: translateX(-1px);
+}
+.dot-2 {
+	right: 0;
+	background-color: #f3e5f5;
+	transform: translateX(1px);
+}
+
+.progress-bar {
+	width: 100%;
+	height: 5px;
+	background-color: #f3e5f5;
+}
+
+.progress-bar .progress {
+	width: 59%;
+	height: 100%;
+	background-color: #9c27b0;
+	color: #9c27b0;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	font-size: 30px;
 }
 
 .date-area {

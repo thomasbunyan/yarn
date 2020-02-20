@@ -135,9 +135,16 @@ class Convert extends Component {
 			<div className="Convert route">
 				<h1>Convert</h1>
 				<div className="conversion">
-					<InfoBubble show={true} width="40" height="200" color="#C7CEEA"></InfoBubble>
+					<InfoBubble show={true} noPadding={true} width="40" height="200" color="#C7CEEA">
+						<div className="con-value">
+							<input type="text" name="leftVal" onChange={this.handleInput} value={this.state.leftVal} />
+							<select name="leftUnit" onChange={this.handleUpdate} value={this.state.leftUnit}>
+								{this.getUnitOptions()}
+							</select>
+						</div>
+					</InfoBubble>
 					<i className="fas fa-equals" onClick={this.saveResult}></i>
-					<InfoBubble show={true} width="40" height="200" color="#C7CEEA"></InfoBubble>
+					<InfoBubble show={true} noPadding={true} width="40" height="200" color="#C7CEEA"></InfoBubble>
 					{/* <div className="con-value">
 						<input type="text" name="leftVal" onChange={this.handleInput} value={this.state.leftVal} />
 						<select name="leftUnit" onChange={this.handleUpdate} value={this.state.leftUnit}>
@@ -154,7 +161,7 @@ class Convert extends Component {
 				{this.state.history.length > 0 ? (
 					<div className="history">
 						<h1>History</h1>
-						{this.getHistory()}
+						<div className="history-grid">{this.getHistory()}</div>
 					</div>
 				) : null}
 			</div>

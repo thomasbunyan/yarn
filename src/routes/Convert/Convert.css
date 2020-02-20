@@ -22,31 +22,44 @@
 
 .con-value {
 	height: 100%;
-	width: 300px;
-	justify-content: column;
+	width: 100%;
 }
 
 .con-value input {
 	width: 100%;
 	height: 60%;
-	border-top-right-radius: 8px;
-	border-top-left-radius: 8px;
-	border: 1px rgb(201, 201, 201) solid;
+	border-top-right-radius: 25px;
+	border-top-left-radius: 25px;
+	border: transparent;
+	background-color: transparent;
 	border-bottom: transparent;
 	font-size: 32px;
 	text-align: center;
+	transition: all 0.3s ease-in-out;
+	font-family: ProductSansRegular;
+}
+
+.con-value input:focus {
+	background-color: rgba(255, 255, 255, 0.3);
+	transition: all 0.3s ease-in-out;
+}
+
+.con-value input:focus,
+.con-value select {
+	outline: none;
 }
 
 .con-value select {
 	width: 100%;
 	height: 40%;
 	padding: 0px 10px;
-	border-bottom-right-radius: 8px;
-	border-bottom-left-radius: 8px;
-	border: 1px rgb(201, 201, 201) solid;
-	background-color: rgb(231, 231, 231);
+	border-bottom-right-radius: 25px;
+	border-bottom-left-radius: 25px;
+	border: transparent;
+	background-color: rgba(0, 0, 0, 0.1);
 	font-size: 18px;
 	text-transform: capitalize;
+	font-family: ProductSansRegular;
 }
 
 .history {
@@ -57,6 +70,15 @@
 	align-items: center;
 }
 
+.history-grid {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
 .history h1 {
 	font-size: 40px;
 	margin: 50px 0 10px 0;
@@ -65,7 +87,7 @@
 .history-item {
 	width: 30%;
 	height: 75px;
-	background-color: rgb(218, 218, 218);
+	box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 5px 20px rgba(166, 173, 201, 0.2);
 	margin: 10px 0;
 	border-radius: 8px;
 	cursor: pointer;

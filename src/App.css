@@ -2,6 +2,22 @@
 	font-family: ProductSansRegular;
 	src: url(./assets/fonts/ProductSansRegular.ttf);
 }
+@font-face {
+	font-family: Bebas;
+	src: url(./assets/fonts/Bebas-Regular.ttf);
+}
+@font-face {
+	font-family: BebasNeue;
+	src: url(./assets/fonts/BebasNeue-Regular.ttf);
+}
+@font-face {
+	font-family: CODE;
+	src: url(./assets/fonts/CODEBold.otf);
+}
+@font-face {
+	font-family: CODEL;
+	src: url(./assets/fonts/CODELight.otf);
+}
 
 .app {
 	min-height: 100vh;

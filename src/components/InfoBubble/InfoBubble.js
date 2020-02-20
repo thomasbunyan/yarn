@@ -19,7 +19,7 @@ class InfoBubble extends Component {
 
 	render() {
 		return (
-			<div className="InfoBubble" style={this.getStyle()}>
+			<div className={"InfoBubble" + (this.props.noPadding ? " no-padding" : "")} style={this.getStyle()}>
 				{this.props.children}
 			</div>
 		);

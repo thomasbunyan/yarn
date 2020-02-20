@@ -67,7 +67,7 @@ class Home extends Component {
 			<div className="Home route">
 				<h1>Home</h1>
 				<div className="bubbles">
-					<InfoBubble show={this.state.joke} width="100" height="250" color="#C7CEEA">
+					<InfoBubble show={this.state.joke} width="100" color="#C7CEEA">
 						<div className="title-bubble">
 							<div className="title-bubble-left">
 								<h1>{this.getTime()} Mum!</h1>
@@ -78,8 +78,23 @@ class Home extends Component {
 							</div>
 						</div>
 					</InfoBubble>
+					<div className="location-bar">
+						<h3>Location-o-metre</h3>
+						<div className="bar-icons">
+							<i className="fas fa-home"></i>
+							<i class="fas fa-building"></i>
+						</div>
+						<div className="distance-bar">
+							<div className="progress-dot"></div>
+							<div className="progress-dot dot-2"></div>
+							<div className="progress-bar">
+								<div className="progress">
+									<i class="fas fa-flag"></i>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<h2>More to come...</h2>
 				<div className="date-area">{this.getDates()}</div>
 			</div>
 		);
