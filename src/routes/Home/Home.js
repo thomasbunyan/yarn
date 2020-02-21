@@ -62,6 +62,39 @@ class Home extends Component {
 		return dates;
 	};
 
+	getLocationProgress = () => {
+		let progress = this.getProgress();
+		if (progress < 2) progress = 2;
+		let style = {};
+		style["width"] = progress + "%";
+		return style;
+	};
+
+	getProgress = () => {
+		let d = new Date();
+		if (d.getDay() > 0 && d.getDay() < 6) {
+			let d2 = new Date();
+			d2.setHours(0, 0, 0, 0);
+			let time = d.getTime() - d2.getTime();
+			time = time / 3600000;
+			if (time < 6.25 || time >= 17.66) {
+				// Home
+				return 0;
+			} else if (time >= 6.25 && time < 7.5) {
+				// Traveling to work
+				return 100 * ((time - 6.25) / 1.25);
+			} else if (time >= 7.5 && time < 16.66) {
+				// Work
+				return 100;
+			} else if (time >= 16.66 || time < 17.66) {
+				// Traveling home
+				return 100 - 100 * ((time - 16.66) / 1);
+			}
+		} else {
+			return 0;
+		}
+	};
+
 	render() {
 		return (
 			<div className="Home route">
@@ -82,14 +115,14 @@ class Home extends Component {
 						<h3>Location-o-metre</h3>
 						<div className="bar-icons">
 							<i className="fas fa-home"></i>
-							<i class="fas fa-building"></i>
+							<i className="fas fa-building"></i>
 						</div>
 						<div className="distance-bar">
 							<div className="progress-dot"></div>
 							<div className="progress-dot dot-2"></div>
 							<div className="progress-bar">
-								<div className="progress">
-									<i class="fas fa-flag"></i>
+								<div className="progress" style={this.getLocationProgress()}>
+									<i className="fas fa-flag"></i>
 								</div>
 							</div>
 						</div>

@@ -86,6 +86,7 @@
 	border-radius: 50%;
 	position: absolute;
 	transform: translateX(-1px);
+	z-index: -1;
 }
 .dot-2 {
 	right: 0;
@@ -100,7 +101,6 @@
 }
 
 .progress-bar .progress {
-	width: 59%;
 	height: 100%;
 	background-color: #9c27b0;
 	color: #9c27b0;
