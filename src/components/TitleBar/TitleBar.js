@@ -15,7 +15,7 @@ class TitleBar extends Component {
 				<div className="left drag"></div>
 				<div className="middle drag"></div>
 				<div className="right">
-					<i class="fas fa-times"></i>
+					<i className="fas fa-times" onClick={this.closeWindow}></i>
 				</div>
 			</div>
 		);
