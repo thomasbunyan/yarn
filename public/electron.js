@@ -19,7 +19,7 @@ function createWindow() {
 }
 
 ipcMain.on("convert-unit-req", (event, arg) => {
-	let { from, to, val } = arg;
+	let { name, from, to, val } = arg;
 	try {
 		if (from === "yd") {
 			from = "ft";
@@ -31,7 +31,7 @@ ipcMain.on("convert-unit-req", (event, arg) => {
 		let res = convert(val)
 			.from(from)
 			.to(to);
-		event.reply("convert-unit-res", res);
+		event.reply("convert-unit-res", { res, name });
 	} catch (e) {
 		event.reply("convert-unit-res", "Error");
 	}

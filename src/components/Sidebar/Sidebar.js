@@ -36,7 +36,7 @@ class Sidebar extends Component {
 						<li>
 							<div>
 								<p className={"icon-label" + (this.state.expandSideBar ? " icon-label-expand" : "")}>Convert</p>
-								<i class="fas fa-exchange-alt"></i>
+								<i className="fas fa-exchange-alt"></i>
 							</div>
 						</li>
 					</Link>

@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import "./Convert.css";
 import "../route.css";
 
-import InfoBubble from "../../components/InfoBubble/InfoBubble";
-
 const electron = window.require("electron");
 const ipcRenderer = electron.ipcRenderer;
 
@@ -18,16 +16,9 @@ const units = {
 
 class Convert extends Component {
 	state = {
-		history: [
-			{
-				leftUnit: "METRE",
-				rightUnit: "METRE",
-				leftVal: "1",
-				rightVal: "1"
-			}
-		],
-		leftVal: "1",
-		rightVal: "1",
+		history: [],
+		leftVal: 1,
+		rightVal: 1,
 		leftUnit: "METRE",
 		rightUnit: "METRE"
 	};
@@ -35,13 +26,16 @@ class Convert extends Component {
 	handleInput = (e) => {
 		e.preventDefault();
 		let { name, value } = e.target;
-		if (isNaN(value)) return;
-		this.setState({ [name]: value }, () => {
+		if (value === "") {
+			value = 0;
+		} else if (isNaN(value)) return;
+		this.setState({ [name]: parseInt(value) }, () => {
 			this.updateConversion(name);
 		});
 	};
 
 	updateConversion = (name) => {
+		console.log("Update", name);
 		if (name === "leftVal") {
 			this.convert(name, this.state.leftUnit, this.state.rightUnit, this.state.leftVal);
 		} else {
@@ -51,14 +45,16 @@ class Convert extends Component {
 
 	convert = (name, from, to, val) => {
 		ipcRenderer.on("convert-unit-res", (event, arg) => {
-			arg = Math.round(arg * 100) / 100;
+			let { name, res } = arg;
+			res = Math.round(res * 100) / 100;
 			if (name === "leftVal") {
-				this.setState({ rightVal: arg });
+				this.setState({ rightVal: res });
 			} else {
-				this.setState({ leftVal: arg });
+				this.setState({ leftVal: res });
 			}
 		});
 		ipcRenderer.send("convert-unit-req", {
+			name,
 			from: units[from],
 			to: units[to],
 			val
@@ -82,7 +78,12 @@ class Convert extends Component {
 	handleUpdate = (e) => {
 		let { name, value } = e.target;
 		this.setState({ [name]: value }, () => {
-			this.updateConversion("leftVal");
+			console.log(name);
+			if (name === "leftUnit") {
+				this.updateConversion("rightVal");
+			} else {
+				this.updateConversion("leftVal");
+			}
 		});
 	};
 
@@ -97,7 +98,6 @@ class Convert extends Component {
 			});
 			this.setState({ history });
 		}
-		console.log(this.state.history);
 	};
 
 	applySaved = (e) => {
@@ -130,33 +130,51 @@ class Convert extends Component {
 		});
 	};
 
+	resetResult = () => {
+		this.setState({
+			leftVal: 1,
+			rightVal: 1,
+			leftUnit: "METRE",
+			rightUnit: "METRE"
+		});
+	};
+
+	getConvertHeight = () => {
+		let style = {};
+		if (this.state.history.length > 0) {
+			style["max-height"] = "300px";
+			style["padding-top"] = "50px";
+		}
+		return style;
+	};
+
 	render() {
 		return (
 			<div className="Convert route">
 				<h1>Convert</h1>
-				<div className="conversion">
-					<InfoBubble show={true} noPadding={true} width="40" height="200" color="#C7CEEA">
-						<div className="con-value">
-							<input type="text" name="leftVal" onChange={this.handleInput} value={this.state.leftVal} />
-							<select name="leftUnit" onChange={this.handleUpdate} value={this.state.leftUnit}>
-								{this.getUnitOptions()}
-							</select>
+				<div className="conversion" style={this.getConvertHeight()}>
+					<div className="conversion-module">
+						<div className="conversion-bubble">
+							<div className="con-value">
+								<select name="leftUnit" onChange={this.handleUpdate} value={this.state.leftUnit}>
+									{this.getUnitOptions()}
+								</select>
+								<input type="text" name="leftVal" onChange={this.handleInput} value={this.state.leftVal} />
+							</div>
 						</div>
-					</InfoBubble>
-					<i className="fas fa-equals" onClick={this.saveResult}></i>
-					<InfoBubble show={true} noPadding={true} width="40" height="200" color="#C7CEEA"></InfoBubble>
-					{/* <div className="con-value">
-						<input type="text" name="leftVal" onChange={this.handleInput} value={this.state.leftVal} />
-						<select name="leftUnit" onChange={this.handleUpdate} value={this.state.leftUnit}>
-							{this.getUnitOptions()}
-						</select>
+						<div className="conversion-bubble">
+							<div className="con-value">
+								<select name="rightUnit" onChange={this.handleUpdate} value={this.state.rightUnit}>
+									{this.getUnitOptions()}
+								</select>
+								<input type="text" name="rightVal" onChange={this.handleInput} value={this.state.rightVal} />
+							</div>
+						</div>
 					</div>
-					<div className="con-value">
-						<input type="text" name="rightVal" onChange={this.handleInput} value={this.state.rightVal} />
-						<select name="rightUnit" onChange={this.handleUpdate} value={this.state.rightUnit}>
-							{this.getUnitOptions()}
-						</select>
-					</div> */}
+					<div className="con-buttons">
+						<i className="fas fa-save" onClick={this.saveResult}></i>
+						<i className="fas fa-redo" onClick={this.resetResult}></i>
+					</div>
 				</div>
 				{this.state.history.length > 0 ? (
 					<div className="history">

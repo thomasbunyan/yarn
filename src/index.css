@@ -14,6 +14,10 @@
 									  supported by Chrome, Opera and Firefox */
 }
 
+*::-webkit-scrollbar {
+	display: none;
+}
+
 .drag {
 	-webkit-app-region: drag;
 }
