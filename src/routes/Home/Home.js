@@ -100,7 +100,7 @@ class Home extends Component {
 			<div className="Home route">
 				<h1>Home</h1>
 				<div className="bubbles">
-					<InfoBubble show={this.state.joke} width="100" color="#C7CEEA">
+					<InfoBubble show={this.state.joke} width="100" color="#efcef5">
 						<div className="title-bubble">
 							<div className="title-bubble-left">
 								<h1>{this.getTime()} Mum!</h1>
