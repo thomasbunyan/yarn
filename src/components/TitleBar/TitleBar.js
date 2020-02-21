@@ -15,7 +15,7 @@ class TitleBar extends Component {
 				<div className="left drag"></div>
 				<div className="middle drag"></div>
 				<div className="right">
-					<ion-icon name="close-circle-outline" onClick={this.closeWindow}></ion-icon>
+					<i class="fas fa-times"></i>
 				</div>
 			</div>
 		);

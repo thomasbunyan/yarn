@@ -25,9 +25,11 @@
 	justify-content: flex-end;
 }
 
-.TitleBar ion-icon {
-	font-size: 24px;
-	margin: 0 10px;
+.TitleBar i {
+	font-size: 28px;
+	margin: 0 15px;
 	cursor: pointer;
-	z-index: 10 !important;
+}
+.TitleBar i:hover {
+	color: #dc3545;
 }
