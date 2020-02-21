@@ -1,7 +1,15 @@
 {
-	"name": "yarn",
+	"name": "Yarn",
 	"version": "0.1.0",
 	"private": true,
+	"author": "Thomas Bunyan",
+	"build": {
+		"appId": "com.yarn.thomasbunyan",
+		"win": {
+			"icon": "build/icon.png"
+		}
+	},
+	"homepage": "./",
 	"main": "public/electron.js",
 	"dependencies": {
 		"@testing-library/jest-dom": "^4.2.4",
